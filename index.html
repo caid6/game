@@ -98,6 +98,42 @@
         .score-update {
             animation: pulse 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
+        .direction-controls {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+            margin-top: 24px;
+            user-select: none;
+        }
+        .horizontal-controls {
+            display: flex;
+            gap: 48px;
+        }
+        .direction-btn {
+            width: 60px;
+            height: 60px;
+            border-radius: 30px;
+            background: rgba(0, 113, 227, 0.1);
+            border: none;
+            color: #0071e3;
+            font-size: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            -webkit-tap-highlight-color: transparent;
+        }
+        .direction-btn:active {
+            background: rgba(0, 113, 227, 0.2);
+            transform: scale(0.95);
+        }
+        @media (min-width: 768px) {
+            .direction-controls {
+                display: none;
+            }
+        }
     </style>
 </head>
 <body>
@@ -112,6 +148,14 @@
     <div class="game-controls">
         <button id="startBtn">开始游戏</button>
         <button id="pauseBtn" disabled>暂停游戏</button>
+    </div>
+    <div class="direction-controls">
+        <button id="upBtn" class="direction-btn">↑</button>
+        <div class="horizontal-controls">
+            <button id="leftBtn" class="direction-btn">←</button>
+            <button id="rightBtn" class="direction-btn">→</button>
+        </div>
+        <button id="downBtn" class="direction-btn">↓</button>
     </div>
     <script src="game.js"></script>
 </body>
