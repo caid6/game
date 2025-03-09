@@ -74,6 +74,36 @@ class Game {
     }
 
     setupEventListeners() {
+        // 虚拟方向键控制
+        const upBtn = document.getElementById('upBtn');
+        const downBtn = document.getElementById('downBtn');
+        const leftBtn = document.getElementById('leftBtn');
+        const rightBtn = document.getElementById('rightBtn');
+
+        const handleDirectionClick = (direction) => {
+            if (!this.isRunning || this.isPaused || this.gameOver) return;
+            
+            switch (direction) {
+                case 'up':
+                    if (this.snake.direction !== 'down') this.snake.nextDirection = 'up';
+                    break;
+                case 'down':
+                    if (this.snake.direction !== 'up') this.snake.nextDirection = 'down';
+                    break;
+                case 'left':
+                    if (this.snake.direction !== 'right') this.snake.nextDirection = 'left';
+                    break;
+                case 'right':
+                    if (this.snake.direction !== 'left') this.snake.nextDirection = 'right';
+                    break;
+            }
+        };
+
+        upBtn.addEventListener('click', () => handleDirectionClick('up'));
+        downBtn.addEventListener('click', () => handleDirectionClick('down'));
+        leftBtn.addEventListener('click', () => handleDirectionClick('left'));
+        rightBtn.addEventListener('click', () => handleDirectionClick('right'));
+
         // 键盘控制
         document.addEventListener('keydown', (e) => {
             // 处理空格键暂停/继续
